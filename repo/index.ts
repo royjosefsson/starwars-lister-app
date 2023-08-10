@@ -6,7 +6,7 @@ interface MoviesResponse {
     results: SwapiMovie[]
 }
 
-const swapi = {
+const Swapi = {
     movies: {
         fetch: async (): Promise<SwapiMovie[]> => {
             const response = await fetch(SWAPI_URL)
@@ -19,7 +19,7 @@ const swapi = {
     }
 }
 
-const omdbapi = {
+const Omdbapi = {
     data: {
         fetch: async (title: string): Promise<OmdbapiMovie> => {
             const response = await fetch(`${OMDBAPI_URL}/?apikey=${OMDBAPI_API_KEY}&t=${encodeURIComponent(title)}`)
@@ -30,7 +30,7 @@ const omdbapi = {
 }
 
 const getPromises = async (swapiMovie: SwapiMovie) => {
-    const omdbapiMovie = await omdbapi.data.fetch(swapiMovie.title)
+    const omdbapiMovie = await Omdbapi.data.fetch(swapiMovie.title)
     return {
         swapi: swapiMovie,
         omdbapi: omdbapiMovie,
@@ -40,7 +40,7 @@ const getPromises = async (swapiMovie: SwapiMovie) => {
 const joinedMovies = {
     movies: {
         fetch: async (): Promise<JoinedMovie[]> => {
-            const movies = await swapi.movies.fetch();
+            const movies = await Swapi.movies.fetch();
             const joinedMoviesData = await Promise.all(movies.map(getPromises));
             return joinedMoviesData;
         },
