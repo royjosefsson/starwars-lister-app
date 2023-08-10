@@ -5,7 +5,7 @@ import { showPercentage } from "@/utils/showPercentage"
 
 interface MoviesResultProps {
     allMovies: JoinedMovie[]
-    selectedMovie: JoinedMovie | null
+    selectedMovie: JoinedMovie | undefined
     onMovieChange: (movie: JoinedMovie) => void
 }
 

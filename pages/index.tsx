@@ -17,7 +17,7 @@ interface HomeProps {
 
 const Home = ({ movies, defaultSortOrder }: HomeProps) => {
   const [allMovies, setAllMovies] = useState<JoinedMovie[]>(movies)
-  const [selectedMovie, setSelectedMovie] = useState<JoinedMovie | null>(null)
+  const [selectedMovie, setSelectedMovie] = useState<JoinedMovie | undefined>(undefined)
 
   const onSearch = (searchPhrase: string) => {
     const filterRegex = new RegExp(searchPhrase, 'i')
@@ -26,11 +26,7 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
     const moviesWithHighlightedWords = filteredMovies.map(withHighlightedWords({ searchPhraseRegex, searchPhrase }))
     setAllMovies(moviesWithHighlightedWords)
 
-    if (!selectedMovie) {
-      return
-    }
-
-    const selectedMovieWithHighlightedWords = moviesWithHighlightedWords.find(x => x.swapi.episode_id === selectedMovie.swapi.episode_id)!
+    const selectedMovieWithHighlightedWords = moviesWithHighlightedWords.find(x => x.swapi.episode_id === selectedMovie?.swapi.episode_id)
     setSelectedMovie(selectedMovieWithHighlightedWords)
   }
 
@@ -41,6 +37,7 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
 
     if (searchPhrase.length < 2) {
       setAllMovies(movies)
+      setSelectedMovie(movies.find(x => x.swapi.episode_id === selectedMovie?.swapi.episode_id))
       return
     }
 
