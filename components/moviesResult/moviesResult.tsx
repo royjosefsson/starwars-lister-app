@@ -46,11 +46,11 @@ const MoviesResult = ({ allMovies, selectedMovie, onMovieChange }: MoviesResultP
         )
     }
 
-    const handleOnKeyDown = (index: number) => (e: any) => {
+    const handleOnKeyDown = (movie: JoinedMovie) => (e: any) => {
         if (e.key !== 'Enter') {
             return
         }
-        onMovieChange(allMovies[index])
+        onMovieChange(movie)
     }
 
     return (
@@ -60,7 +60,7 @@ const MoviesResult = ({ allMovies, selectedMovie, onMovieChange }: MoviesResultP
                     {allMovies.map((movie, i) => (
                         <li
                             tabIndex={i + 8}
-                            onKeyDown={handleOnKeyDown(i)}
+                            onKeyDown={handleOnKeyDown(movie)}
                             key={movie.swapi.episode_id}
                             className="movies-result__list__li"
                             onClick={_onMovieChange(movie)}>

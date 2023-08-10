@@ -27,11 +27,11 @@ const Sorter = ({ onChange }: SorterProps) => {
         onSelectOption(option)
     }
 
-    const handleOnKeyDown = (index: number) => (e: any) => {
+    const handleOnKeyDown = (option: SortBy) => (e: any) => {
         if (e.key !== 'Enter') {
             return
         }
-        onSelectOption(Object.values(SortBy)[index])
+        onSelectOption(option)
     }
 
     return (
@@ -44,7 +44,7 @@ const Sorter = ({ onChange }: SorterProps) => {
                     <li
                         key={key}
                         tabIndex={i + 2}
-                        onKeyDown={handleOnKeyDown(i)}
+                        onKeyDown={handleOnKeyDown(option)}
                         className="sorter__options__li"
                         onClick={handleOnOptionClick(option)}
                     >
