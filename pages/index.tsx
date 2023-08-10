@@ -5,6 +5,7 @@ import { SortBy } from "@/enums/sortBy"
 import { JoinedMovie } from "@/interfaces/movie"
 import { Repo } from "@/repo"
 import { addHighlight } from "@/utils/addHighlight"
+import { sort } from "@/utils/sort"
 import { ChangeEvent, useState } from "react"
 
 let timeout: NodeJS.Timeout
@@ -55,26 +56,22 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
 
   const handleOnSorterOrderChange = (sortOption: SortBy) => {
     if (sortOption === SortBy.episode) {
-      return setAllMovies([...allMovies].sort((a, b) => a.swapi.episode_id - b.swapi.episode_id))
+      return setAllMovies([...allMovies].sort(sort.byEpisode))
     }
 
     if (sortOption === SortBy.title) {
-      return setAllMovies([...allMovies].sort((a, b) => {
-        const aTitle = a.swapi.title.split(" - ")[1].toLowerCase()
-        const bTitle = b.swapi.title.split(" - ")[1].toLowerCase()
-        return aTitle.localeCompare(bTitle)
-      }));
+      return setAllMovies([...allMovies].sort(sort.byTitle));
     }
 
     if (sortOption === SortBy.rating) {
-      return setAllMovies([...allMovies].sort((a, b) => Number(b.omdbapi.imdbRating) - Number(a.omdbapi.imdbRating)));
+      return setAllMovies([...allMovies].sort(sort.byRating));
     }
 
     if (sortOption === SortBy.year) {
-      return setAllMovies([...allMovies].sort((a, b) => new Date(b.swapi.release_date).getTime() - new Date(a.swapi.release_date).getTime()));
+      return setAllMovies([...allMovies].sort(sort.byYear));
     }
 
-    return setAllMovies([...allMovies].sort((a, b) => defaultSortOrder.indexOf(a.swapi.episode_id) - defaultSortOrder.indexOf(b.swapi.episode_id)))
+    return setAllMovies([...allMovies].sort(sort.byDefault(defaultSortOrder)))
   }
 
   return (
