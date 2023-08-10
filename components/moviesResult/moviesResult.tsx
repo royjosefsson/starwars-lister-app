@@ -1,6 +1,6 @@
 import { JoinedMovie } from "@/interfaces/movie"
 import Image from "next/image"
-import { Stars } from "../stars"
+import { Stars } from "@/components/stars"
 import { showPercentage } from "@/utils/showPercentage"
 
 interface MoviesResultProps {
