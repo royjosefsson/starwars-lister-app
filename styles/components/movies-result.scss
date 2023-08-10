@@ -23,6 +23,17 @@
     &__information__top-section {
         display: flex;
         align-items: center;
+
+        @media (max-width: 620px) {
+            flex-direction: column;
+        }
+    }
+
+    &__information__top-section__image {
+        @media (max-width: 620px) {
+            width: 100%;
+            height: auto;
+        }
     }
 
     &__information__top-section__opening_crawl {

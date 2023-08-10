@@ -1,12 +1,7 @@
 .stars {
     display: flex;
-    font-size: 6px;
-    min-height: 6px;
-
-    @media screen and (min-width: 465px) {
-        font-size: 20px;
-        min-height: 20px;
-    }
+    font-size: 20px;
+    min-height: 20px;
 
     &__star {
         padding: 0 0.1rem;
