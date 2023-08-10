@@ -26,7 +26,7 @@ const Sorter = ({ onChange }: SorterProps) => {
     return (
         <div className="sorter">
             <button className="sorter__button" onClick={handleOnSortButtonClick} tabIndex={1}>
-                {sortBy === SortBy.default ? "Sort by..." : sortBy}
+                {sortBy}
             </button>
             <ul className={`sorter__options ${optionsAreVisible ? "visible" : ""}`.trim()}>
                 {Object.entries(SortBy).map(([key, option]) => (
@@ -35,7 +35,7 @@ const Sorter = ({ onChange }: SorterProps) => {
                         className="sorter__options__li"
                         onClick={onSelectOption(option)}
                     >
-                        {option === SortBy.default ? "Sort by..." : option}
+                        {option}
                     </li>
                 ))}
             </ul>
