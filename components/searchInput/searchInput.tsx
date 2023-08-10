@@ -14,7 +14,7 @@ const SearchInput = ({ onChange }: SearchInputProps) => {
                 type="text"
                 onChange={onChange}
                 placeholder="Type to filter..."
-                tabIndex={2}
+                tabIndex={7}
             />
         </div>
     )

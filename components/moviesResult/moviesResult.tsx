@@ -59,7 +59,7 @@ const MoviesResult = ({ allMovies, selectedMovie, onMovieChange }: MoviesResultP
                 <ul className="movies-result__list">
                     {allMovies.map((movie, i) => (
                         <li
-                            tabIndex={i + 3}
+                            tabIndex={i + 8}
                             onKeyDown={handleOnKeyDown(i)}
                             key={movie.swapi.episode_id}
                             className="movies-result__list__li"

@@ -17,10 +17,21 @@ const Sorter = ({ onChange }: SorterProps) => {
         setOptionsAreVisible(false)
     }
 
-    const onSelectOption = (option: SortBy) => () => {
+    const onSelectOption = (option: SortBy) => {
         setSortBy(option)
         hideOptions()
         onChange?.(option)
+    }
+
+    const handleOnOptionClick = (option: SortBy) => () => {
+        onSelectOption(option)
+    }
+
+    const handleOnKeyDown = (index: number) => (e: any) => {
+        if (e.key !== 'Enter') {
+            return
+        }
+        onSelectOption(Object.values(SortBy)[index])
     }
 
     return (
@@ -29,11 +40,13 @@ const Sorter = ({ onChange }: SorterProps) => {
                 {sortBy}
             </button>
             <ul className={`sorter__options ${optionsAreVisible ? "visible" : ""}`.trim()}>
-                {Object.entries(SortBy).map(([key, option]) => (
+                {Object.entries(SortBy).map(([key, option], i) => (
                     <li
                         key={key}
+                        tabIndex={i + 2}
+                        onKeyDown={handleOnKeyDown(i)}
                         className="sorter__options__li"
-                        onClick={onSelectOption(option)}
+                        onClick={handleOnOptionClick(option)}
                     >
                         {option}
                     </li>
