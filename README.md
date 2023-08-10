@@ -13,7 +13,7 @@ This is a Next.js app that lists Star Wars movies using data from the SWAPI [htt
 1. Clone the repository:
   ``` bash
   git clone git@github.com:royjosefsson/starwars-lister-app.git
-  cd star-wars-lister
+  cd starwars-lister
   ```
 
 2. Install dependencies:
