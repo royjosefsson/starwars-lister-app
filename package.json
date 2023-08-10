@@ -1,5 +1,5 @@
 {
-  "name": "starwars-movies",
+  "name": "starwars-lister-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
