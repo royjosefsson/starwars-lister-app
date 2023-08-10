@@ -1,0 +1,125 @@
+.movies-result {
+    min-height: calc(100vh - 9.04rem);
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+
+        @media (max-width: 1600px) {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    }
+
+    &__list,
+    &__information {
+        background: var(--movies-result-background-color);
+        border: 1px solid var(--movies-result-border-color);
+        padding: 1rem;
+        border-radius: 5px;
+    }
+
+    &__information__top-section {
+        display: flex;
+        align-items: center;
+    }
+
+    &__information__top-section__opening_crawl {
+        margin-left: 0.5rem;
+    }
+
+    &__information__top-section__average-rating {
+        display: flex;
+        align-items: center;
+    }
+
+    &__information__top-section__ratings {
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__information__top-section__ratings__li {
+        padding: 0 0.5rem;
+        margin: 0.25rem;
+        color: var(--ratings-li-color);
+        border: 1px solid var(--ratings-li-border-color);
+        border-radius: 15px;
+    }
+
+    &__list {
+        margin: 0;
+        list-style-type: none;
+    }
+
+    &__list__li {
+        padding: 1rem;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid var(--movies-result-list-border-color);
+        }
+
+        &:hover {
+            background: var(--movies-result-list-li-background-hover-color);
+        }
+    }
+
+    &__list__li__content {
+        display: flex;
+        place-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        @media (max-width: 850px) {
+            flex-direction: column;
+        }
+    }
+
+    &__list__li__content__left-side {
+        flex-direction: row;
+
+        @media (max-width: 850px) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__list__li__content__right-side {
+        display: flex;
+        align-items: center;
+
+        @media (max-width: 850px) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__list__li__content__episode {
+        width: 5.5rem;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+    }
+
+    &__list__li__content__title {
+        font-weight: 600;
+        margin-left: 1rem;
+
+        @media (max-width: 850px) {
+            margin-left: 0;
+        }
+    }
+
+    &__list__li__content__year {
+        min-width: 6rem;
+        margin-left: 1rem;
+
+        @media (max-width: 850px) {
+            margin-left: 0;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+* {
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: var(--body-background-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.svg {
+    height: 1.25rem;
+}
+
+.container {
+    padding: 0 1.25rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.highlight {
+    background: var(--highlight-background-color);
+}

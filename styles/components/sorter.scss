@@ -1,0 +1,46 @@
+.sorter {
+    position: relative;
+
+    &__button {
+        background: var(--button-background-color);
+        border: 1px solid var(--button-border-color);
+        padding-left: 1rem;
+        padding-right: 1rem;
+        cursor: pointer;
+        height: 100%;
+        color: var(--button-color);
+        text-transform: uppercase;
+
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+        &:hover {
+            background: var(--button-background-hover-color);
+        }
+    }
+
+    &__options {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background: var(--sorter-background-color);
+        border: 1px solid black;
+        width: 10rem;
+
+        &.visible {
+            display: block;
+        }
+    }
+
+    &__options__li {
+        padding: 0.25rem 1rem;
+        cursor: pointer;
+        &:hover {
+            background: var(--sorter-background-hover-color);
+        }
+    }
+}
