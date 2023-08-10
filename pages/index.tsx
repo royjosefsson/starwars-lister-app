@@ -83,7 +83,7 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
       onSearchInputChange={handleOnSearchInputChange}
       seo={{
         title: selectedMovie?.swapi.title || "Home",
-        description: selectedMovie?.swapi.opening_crawl || "List of your favorite movies!"
+        description: `${selectedMovie?.swapi.opening_crawl.slice(0, 160)}...` || "List of your favorite movies!"
       }}
     >
       <MoviesResult
