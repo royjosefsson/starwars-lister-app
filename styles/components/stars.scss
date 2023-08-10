@@ -2,6 +2,7 @@
     display: flex;
     font-size: 20px;
     min-height: 20px;
+    flex-wrap: wrap;
 
     &__star {
         padding: 0 0.1rem;
