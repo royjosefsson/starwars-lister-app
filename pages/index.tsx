@@ -4,7 +4,7 @@ import { REVALIDATE } from "@/data/site-settings"
 import { SortBy } from "@/enums/sortBy"
 import { JoinedMovie } from "@/interfaces/movie"
 import { Repo } from "@/repo"
-import { addHighlight } from "@/utils/addHighlight"
+import { withHighlightedWords } from "@/utils/withHighlightedWords"
 import { sort } from "@/utils/sort"
 import { ChangeEvent, useState } from "react"
 
@@ -23,16 +23,8 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
     const filterRegex = new RegExp(searchPhrase, 'i')
     const searchPhraseRegex = new RegExp(searchPhrase, 'ig')
     const filteredMovies = movies.filter(x => filterRegex.test(`${x.swapi.title} ${x.swapi.opening_crawl} ${x.swapi.director}`))
-    const withHighlight = filteredMovies.map(x => ({
-      ...x,
-      swapi: {
-        ...x.swapi,
-        title: x.swapi.title.replace(searchPhraseRegex, addHighlight(searchPhrase)),
-        opening_crawl: x.swapi.opening_crawl.replace(searchPhraseRegex, addHighlight(searchPhrase)),
-        director: x.swapi.director.replace(searchPhraseRegex, addHighlight(searchPhrase)),
-      }
-    }))
-    setAllMovies(withHighlight)
+    const moviesWithHighlightedWords = filteredMovies.map(withHighlightedWords(searchPhraseRegex)(searchPhrase))
+    setAllMovies(moviesWithHighlightedWords)
   }
 
   const handleOnSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
