@@ -16,8 +16,8 @@ export interface SwapiMovie {
 }
 
 interface Rating {
-  "Source": string,
-  "Value": string
+  Source: string,
+  Value: string
 }
 
 export interface OmdbapiMovie {
