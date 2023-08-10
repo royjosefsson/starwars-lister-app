@@ -25,17 +25,24 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
     const filteredMovies = movies.filter(x => filterRegex.test(`${x.swapi.title} ${x.swapi.opening_crawl} ${x.swapi.director}`))
     const moviesWithHighlightedWords = filteredMovies.map(withHighlightedWords({ searchPhraseRegex, searchPhrase }))
     setAllMovies(moviesWithHighlightedWords)
+
+    if (!selectedMovie) {
+      return
+    }
+
+    const selectedMovieWithHighlightedWords = moviesWithHighlightedWords.find(x => x.swapi.episode_id === selectedMovie.swapi.episode_id)!
+    setSelectedMovie(selectedMovieWithHighlightedWords)
   }
 
   const handleOnSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchPhrase = e.target.value
 
+    clearTimeout(timeout)
+
     if (searchPhrase.length < 2) {
       setAllMovies(movies)
       return
     }
-
-    clearTimeout(timeout)
 
     timeout = setTimeout(() => {
       onSearch(searchPhrase)
