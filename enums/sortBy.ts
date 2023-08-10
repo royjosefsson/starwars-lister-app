@@ -1,5 +1,5 @@
 export enum SortBy {
-    default = "Default",
+    default = "Sort by...",
     episode = "Episode",
     title = "Title",
     rating = "Rating",
