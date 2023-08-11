@@ -5,10 +5,10 @@
     flex-wrap: wrap;
 
     &__star {
-        padding: 0 0.1rem;
         color: var(--stars-filled-background-color);
-        &--outlined {
-            color: var(--stars-outlined-background-color);
-        }
+    }
+
+    &__star--outlined {
+        color: var(--stars-outlined-background-color);
     }
 }

@@ -43,6 +43,10 @@
     &__information__top-section__average-rating {
         display: flex;
         align-items: center;
+
+        .stars {
+            margin-left: 1rem;
+        }
     }
 
     &__information__top-section__ratings {
