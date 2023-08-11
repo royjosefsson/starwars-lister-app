@@ -47,10 +47,6 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
     }, 250);
   }
 
-  const handleOnMovieChange = (movie: JoinedMovie) => {
-    setSelectedMovie(movie)
-  }
-
   const handleOnSorterOrderChange = (sortOption: SortBy) => {
     if (sortOption === SortBy.episode) {
       return setAllMovies([...allMovies].sort(sort.byEpisode))
@@ -83,7 +79,7 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
       <MoviesResult
         allMovies={allMovies}
         selectedMovie={selectedMovie}
-        onMovieChange={handleOnMovieChange}
+        onMovieChange={setSelectedMovie}
       />
     </Layout>
   )
