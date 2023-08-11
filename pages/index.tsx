@@ -22,7 +22,7 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
   const onSearch = (searchPhrase: string) => {
     const filterRegex = new RegExp(searchPhrase, 'i')
     const searchPhraseRegex = new RegExp(searchPhrase, 'ig')
-    const moviesWithHighlightedWords = movies.map(withHighlightedWords({ searchPhraseRegex, searchPhrase }))
+    const moviesWithHighlightedWords = movies.map(withHighlightedWords(searchPhraseRegex))
     const filteredMovies = moviesWithHighlightedWords.filter(x => filterRegex.test(`${x.swapi.title} ${x.swapi.opening_crawl} ${x.swapi.director}`))
     setAllMovies(filteredMovies)
 
