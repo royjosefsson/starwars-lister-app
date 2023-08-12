@@ -1,5 +1,5 @@
 import { SortBy } from "@/enums/sortBy";
-import { useState } from "react";
+import { KeyboardEvent, useState } from "react";
 
 interface SorterProps {
     onChange?: (option: SortBy) => void
@@ -27,7 +27,7 @@ const Sorter = ({ onChange }: SorterProps) => {
         onSelectOption(option)
     }
 
-    const handleOnKeyDown = (option: SortBy) => (e: any) => {
+    const handleOnKeyDown = (option: SortBy) => (e: KeyboardEvent) => {
         if (e.key !== 'Enter') {
             return
         }

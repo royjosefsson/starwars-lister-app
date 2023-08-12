@@ -2,6 +2,7 @@ import { JoinedMovie } from "@/interfaces/movie"
 import Image from "next/image"
 import { Stars } from "@/components/stars"
 import { showPercentage } from "@/utils/showPercentage"
+import { KeyboardEvent } from "react"
 
 interface MoviesResultProps {
     allMovies: JoinedMovie[]
@@ -46,7 +47,7 @@ const MoviesResult = ({ allMovies, selectedMovie, onMovieChange }: MoviesResultP
         )
     }
 
-    const handleOnKeyDown = (movie: JoinedMovie) => (e: any) => {
+    const handleOnKeyDown = (movie: JoinedMovie) => (e: KeyboardEvent) => {
         if (e.key !== 'Enter') {
             return
         }
