@@ -86,9 +86,8 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
 }
 
 export const getStaticProps = async () => {
-  const movies = await Repo.joinedMovies.movies.fetch()
+  const { movies, defaultSortOrder } = await Repo.JoinedMovies.movies.fetch()
 
-  const defaultSortOrder = movies.map(x => x.swapi.episode_id)
   return {
     props: { movies, defaultSortOrder },
     revalidate: REVALIDATE,
