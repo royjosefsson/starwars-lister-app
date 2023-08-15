@@ -93,7 +93,6 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
 
 export const getStaticProps = async () => {
   const { movies, defaultSortOrder } = await Repo.JoinedMovies.movies.fetch()
-  console.log(JSON.stringify(movies[0], null, 2))
 
   return {
     props: { movies, defaultSortOrder },
