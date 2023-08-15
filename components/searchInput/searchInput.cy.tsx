@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchInput from './searchInput'
+import { SearchInput } from "@/components/searchInput"
 
 describe('<SearchInput />', () => {
   it('renders', () => {

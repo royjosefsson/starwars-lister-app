@@ -1,5 +1,5 @@
 import React from 'react'
-import Sorter from './sorter'
+import { Sorter } from "@/components/sorter"
 
 describe('<Sorter />', () => {
   it('renders', () => {

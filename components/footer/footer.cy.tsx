@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from './footer'
+import { Footer } from "@/components/footer"
 
 describe('<Footer />', () => {
   it('renders', () => {
