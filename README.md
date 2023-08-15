@@ -45,6 +45,11 @@ npm install
 	npm run start
 	```
 
+- To run Cypress tests:
+  ``` bash
+	npm run cypress
+	```
+
 ### Features:
 
 - Fetches Star Wars movie data from SWAPI.
