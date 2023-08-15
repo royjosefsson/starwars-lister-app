@@ -50,6 +50,21 @@ npm install
 	npm run cypress
 	```
 
+- To run end-to-end (E2E) tests:
+  ``` bash
+	npm run cypress:test:e2e
+	```
+
+- To run component-level tests:
+  ``` bash
+	npm run cypress:test:components
+	```
+
+- To run all tests (E2E and component-level):
+  ``` bash
+	npm run cypress:test
+	```
+
 ### Features:
 
 - Fetches Star Wars movie data from SWAPI.
