@@ -1,6 +1,7 @@
 import { OMDBAPI_URL, OMDBAPI_API_KEY, SWAPI_URL } from "@/data/site-settings"
 import { InitialDataResponse } from "@/interfaces/initialDataResponse"
-import { JoinedMovie, OmdbapiMovie, SwapiMovie } from "@/interfaces/movie"
+import { OmdbapiMovie, SwapiMovie } from "@/interfaces/movie"
+import { getJoinedMovie } from "@/utils/getJoinedMovies"
 import { withExtendedTitle } from "@/utils/withExtendedTitle"
 
 const Swapi = {
@@ -24,24 +25,18 @@ const Omdbapi = {
     }
 }
 
-const getPromises = async (swapiMovie: SwapiMovie): Promise<JoinedMovie> => {
-    const omdbapiMovie = await Omdbapi.movies.fetch(swapiMovie.title)
-    const joinedMovie: JoinedMovie = { swapi: swapiMovie, omdbapi: omdbapiMovie, }
-    return joinedMovie
-}
-
 const JoinedMovies = {
     movies: {
         fetch: async (): Promise<InitialDataResponse> => {
             const swapiMovies = await Swapi.movies.fetch();
-            const movies = await Promise.all(swapiMovies.map(getPromises));
-
+            const movies = await Promise.all(swapiMovies.map(getJoinedMovie));
             const defaultSortOrder = movies.map(x => x.swapi.episode_id)
+
             return { movies, defaultSortOrder };
         },
     },
 }
 
-const Repo = { JoinedMovies }
+const Repo = { JoinedMovies, Omdbapi }
 
 export { Repo }
