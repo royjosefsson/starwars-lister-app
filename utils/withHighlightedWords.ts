@@ -4,7 +4,7 @@ const addHighlight = (match: string) => {
   return `<span class="highlight">${match}</span>`
 }
 
-export const withHighlightedWords = (searchPhraseRegex: RegExp) => (movie: JoinedMovie) => ({
+export const withHighlightedWords = (searchPhraseRegex: RegExp) => (movie: JoinedMovie): JoinedMovie => ({
   ...movie,
   swapi: {
     ...movie.swapi,

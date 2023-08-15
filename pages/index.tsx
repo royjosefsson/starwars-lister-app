@@ -24,7 +24,13 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
     const filterRegex = new RegExp(searchPhrase, 'i')
     const searchPhraseRegex = new RegExp(searchPhrase, 'ig')
     const moviesWithHighlightedWords = movies.map(withHighlightedWords(searchPhraseRegex))
-    const filteredMovies = moviesWithHighlightedWords.filter(x => filterRegex.test(`${x.swapi.title} ${x.swapi.opening_crawl} ${x.swapi.director}`))
+    const filteredMovies = moviesWithHighlightedWords.filter(x => (
+      filterRegex.test(x.swapi.title)
+      ||
+      filterRegex.test(x.swapi.opening_crawl)
+      ||
+      filterRegex.test(x.swapi.director)
+    ))
     setAllMovies(filteredMovies)
 
     const selectedMovieWithHighlightedWords = moviesWithHighlightedWords.find(x => x.swapi.episode_id === selectedMovie?.swapi.episode_id)
@@ -87,6 +93,7 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
 
 export const getStaticProps = async () => {
   const { movies, defaultSortOrder } = await Repo.JoinedMovies.movies.fetch()
+  console.log(JSON.stringify(movies[0], null, 2))
 
   return {
     props: { movies, defaultSortOrder },
