@@ -4,17 +4,7 @@ import { Layout } from "@/components/layout"
 describe('<Layout />', () => {
   it('renders', () => {
 
-    const onSorterOrderChange = () => {};
-    const onSearchInputChange = () => {};
-
-    cy.mount(<Layout
-      onSorterOrderChange={onSorterOrderChange}
-      onSearchInputChange={onSearchInputChange}
-      seo={{
-        title: 'Test Title',
-        description: 'Test Description',
-      }}
-    >
+    cy.mount(<Layout>
       <h1>Heading in Layout</h1>
     </Layout>)
   })
