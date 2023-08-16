@@ -73,13 +73,13 @@ describe('<MoviesResult />', () => {
         selectedMovie={mockMovie}
         onMovieChange={handleOnMovieChange}
       />
-    );
+    )
 
-    cy.contains('Episode IV - A New Hope');
-    cy.contains('George Lucas');
-    cy.get('.movies-result__list .stars .stars__star:not(.stars__star--outlined)').should('have.length', 8);
-    cy.contains('1977-05-25');
-  });
+    cy.contains('Episode IV - A New Hope')
+    cy.contains('George Lucas')
+    cy.get('.movies-result__list .stars .stars__star:not(.stars__star--outlined)').should('have.length', 8)
+    cy.contains('1977-05-25')
+  })
 
   it('renders without a selected movie', () => {
     cy.mount(
@@ -88,17 +88,16 @@ describe('<MoviesResult />', () => {
         selectedMovie={undefined}
         onMovieChange={handleOnMovieChange}
       />
-    );
+    )
 
-    // Assertions for rendering "Select a movie!" content
-    cy.contains('Select a movie!');
+    cy.contains('Select a movie!')
     cy.get('.movies-result__information__top-section__ratings__li').should(
       'not.exist'
-    );
-  });
+    )
+  })
 
   it('handles movie selection', () => {
-    const onMovieChange = cy.stub().as('onMovieChange'); // Create a named stub
+    const onMovieChange = cy.stub().as('onMovieChange')
   
     cy.mount(
       <MoviesResult
@@ -108,11 +107,9 @@ describe('<MoviesResult />', () => {
       />
     );
   
-    // Click on a movie
-    cy.contains('Episode IV - A New Hope').click(); // Use the actual title from mockMovie
+    cy.contains('Episode IV - A New Hope').click()
   
-    // Verify the onMovieChange function was called with the correct movie
-    cy.get('@onMovieChange').should('have.been.calledOnce'); // Check the named stub
-    cy.get('@onMovieChange').should('have.been.calledWith', mockMovie); // Check arguments of the stub
-  });
-});
+    cy.get('@onMovieChange').should('have.been.calledOnce')
+    cy.get('@onMovieChange').should('have.been.calledWith', mockMovie)
+  })
+})
