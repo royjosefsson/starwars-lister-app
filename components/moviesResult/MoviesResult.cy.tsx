@@ -1,4 +1,3 @@
-import React from 'react'
 import { MoviesResult } from "@/components/moviesResult"
 import { JoinedMovie } from '@/interfaces/movie';
 

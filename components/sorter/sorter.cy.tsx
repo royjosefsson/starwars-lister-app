@@ -1,4 +1,3 @@
-import React from 'react'
 import { Sorter } from "@/components/sorter"
 
 describe('<Sorter />', () => {
