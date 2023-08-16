@@ -28,7 +28,7 @@ const MoviesResult = ({ allMovies, selectedMovie, onMovieChange }: MoviesResultP
                 <h1 dangerouslySetInnerHTML={{ __html: selectedMovie.swapi.title }} />
                 <section className="movies-result__information__top-section">
                     <Image className="movies-result__information__top-section__image" src={selectedMovie.omdbapi.Poster} height={234} width={150} alt={selectedMovie.swapi.title} />
-                    <p className="movies-result__information__top-section__opening_crawl" dangerouslySetInnerHTML={{ __html: selectedMovie.swapi.opening_crawl }} />
+                    <p className="movies-result__information__top-section__opening-crawl" dangerouslySetInnerHTML={{ __html: selectedMovie.swapi.opening_crawl }} />
                 </section>
                 <p dangerouslySetInnerHTML={{ __html: `Directed by ${selectedMovie.swapi.director}` }} />
                 <div className="movies-result__information__top-section__average-rating">
