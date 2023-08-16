@@ -56,7 +56,7 @@ const MoviesResult = ({ allMovies, selectedMovie, onMovieChange }: MoviesResultP
 
     return (
         <div className="movies-result container">
-            <div className="movies-result__content">
+            <main className="movies-result__content">
                 <ul className="movies-result__list">
                     {allMovies.map((movie, i) => (
                         <li
@@ -81,7 +81,7 @@ const MoviesResult = ({ allMovies, selectedMovie, onMovieChange }: MoviesResultP
                 <article className="movies-result__information">
                     {renderInformationContent()}
                 </article>
-            </div>
+            </main>
         </div>
     )
 }
