@@ -3,6 +3,6 @@ import { Stars } from "@/components/stars"
 
 describe('<Stars />', () => {
   it('renders', () => {
-    cy.mount(<Stars amount={3} />)
+    cy.mount(<Stars />)
   })
 })

@@ -1,9 +1,8 @@
 interface StarsProps {
-    amount: number
+    amount?: number
 }
 
-const Stars = (props: StarsProps) => {
-    const { amount } = props
+const Stars = ({ amount = 0 }: StarsProps) => {
     if (amount === 0) {
         return (
             <div className="stars" />
