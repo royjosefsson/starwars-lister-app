@@ -19,8 +19,7 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
   const [allMovies, setAllMovies] = useState<JoinedMovie[]>(movies)
   const [selectedMovie, setSelectedMovie] = useState<JoinedMovie | undefined>(undefined)
 
-  const onSearch = (_searchPhrase: string) => {
-    const searchPhrase = _searchPhrase.trim()
+  const onSearch = (searchPhrase: string) => {
     const filterRegex = new RegExp(searchPhrase, 'i')
     const searchPhraseRegex = new RegExp(searchPhrase, 'ig')
     const moviesWithHighlightedWords = movies.map(withHighlightedWords(searchPhraseRegex))
@@ -49,7 +48,7 @@ const Home = ({ movies, defaultSortOrder }: HomeProps) => {
     }
 
     timeout = setTimeout(() => {
-      onSearch(searchPhrase)
+      onSearch(searchPhrase.trim())
     }, 250);
   }
 
