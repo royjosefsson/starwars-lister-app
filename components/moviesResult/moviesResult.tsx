@@ -1,8 +1,7 @@
 import { JoinedMovie } from "@/interfaces/movie"
-import Image from "next/image"
 import { Stars } from "@/components/stars"
-import { showPercentage } from "@/utils/showPercentage"
 import { KeyboardEvent } from "react"
+import { RenderInformationContent } from "@/components/moviesResult/components"
 
 interface MoviesResultProps {
     allMovies: JoinedMovie[]
@@ -14,37 +13,6 @@ const MoviesResult = ({ allMovies, selectedMovie, onMovieChange }: MoviesResultP
 
     const _onMovieChange = (movie: JoinedMovie) => () => {
         onMovieChange(movie)
-    }
-
-    const renderInformationContent = () => {
-        if (!selectedMovie) {
-            return (
-                <h1>Select a movie!</h1>
-            )
-        }
-
-        return (
-            <>
-                <h1 dangerouslySetInnerHTML={{ __html: selectedMovie.swapi.title }} />
-                <section className="movies-result__information__top-section">
-                    <Image className="movies-result__information__top-section__image" src={selectedMovie.omdbapi.Poster} height={234} width={150} alt={selectedMovie.swapi.title} />
-                    <p className="movies-result__information__top-section__opening-crawl" dangerouslySetInnerHTML={{ __html: selectedMovie.swapi.opening_crawl }} />
-                </section>
-                <p dangerouslySetInnerHTML={{ __html: `Directed by ${selectedMovie.swapi.director}` }} />
-                <div className="movies-result__information__top-section__average-rating">
-                    Average rating: <Stars amount={Math.floor(Number(selectedMovie.omdbapi.imdbRating))} />
-                </div>
-                <ul className="movies-result__information__top-section__ratings">
-                    {selectedMovie.omdbapi.Ratings.map(x => (
-                        <li
-                            key={x.Source}
-                            className="movies-result__information__top-section__ratings__li">
-                            {x.Source} {showPercentage(x.Value)}
-                        </li>
-                    ))}
-                </ul>
-            </>
-        )
     }
 
     const handleOnKeyDown = (movie: JoinedMovie) => (e: KeyboardEvent) => {
@@ -78,9 +46,7 @@ const MoviesResult = ({ allMovies, selectedMovie, onMovieChange }: MoviesResultP
                         </li>
                     ))}
                 </ul>
-                <article className="movies-result__information">
-                    {renderInformationContent()}
-                </article>
+                <RenderInformationContent selectedMovie={selectedMovie} />
             </main>
         </div>
     )
