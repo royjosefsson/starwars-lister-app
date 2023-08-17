@@ -3,11 +3,11 @@ import { JoinedMovie } from "@/interfaces/movie"
 import { showPercentage } from "@/utils/showPercentage"
 import Image from "next/image"
 
-interface RenderInformationContent {
+interface RenderInformationContentProps {
     selectedMovie: JoinedMovie | undefined
 }
 
-const RenderInformationContent = ({ selectedMovie }: RenderInformationContent) => {
+const RenderInformationContent = ({ selectedMovie }: RenderInformationContentProps) => {
     if (!selectedMovie) {
         return (
             <article className="movies-result__information">
